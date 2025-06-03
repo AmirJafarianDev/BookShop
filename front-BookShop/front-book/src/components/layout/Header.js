@@ -1,12 +1,13 @@
-
-import Link from 'next/link';
-import { cookies } from 'next/headers'; 
-import { CiLogin } from 'react-icons/ci';
-import { CgProfile } from 'react-icons/cg';
+import Link from "next/link";
+import { cookies } from "next/headers";
+import { CiLogin } from "react-icons/ci";
+import { CgProfile } from "react-icons/cg";
 
 async function Header() {
-  const token=cookies().get('token')?.value
-  console.log(token)
+  const cookieStore = await cookies();
+  const tokenObject = await cookieStore.get("token");
+  const token = tokenObject ? tokenObject.value : null;
+  // console.log(token)
 
   return (
     <header className="flex justify-between w-[80%] m-auto rounded-xl mt-4 h-16 bg-blue-600">
