@@ -1,13 +1,23 @@
 "use client";
+
+import Cookies from "js-cookie";
 import Link from "next/link";
-import { useActionState } from "react";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 
 function SignInPage() {
+  const router = useRouter();
+  
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      router.push("/");
+    }
+  }, []);
   const [state, signInAction, isPending] = useActionState(signInHandler, null);
   async function signInHandler(previousState, formData) {
     const data = Object.fromEntries(formData.entries());
-    // console.log(data);
     try {
       const response = await fetch("http://localhost:3000/auth/login", {
         method: "POST",
@@ -15,11 +25,21 @@ function SignInPage() {
         body: JSON.stringify(data),
       });
       const result = await response.json();
-
+      console.log(result)
       if (result?.message == "Invalid credentials") {
         toast.error("نام کاربری یا رمز عبور اشتباه است");
       } else {
         toast.success("ورود با موفقیت انجام شد");
+        Cookies.set("token", result.token);
+        
+        if (result.username) {
+          localStorage.setItem('username', result.username);
+        }
+        if (result.fullName) {
+          localStorage.setItem('fullName', result.fullName);
+        }
+        router.push("/");
+        router.refresh();
       }
     } catch (error) {
       return { error: error.message };

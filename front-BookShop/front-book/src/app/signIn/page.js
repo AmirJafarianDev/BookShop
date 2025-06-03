@@ -1,6 +1,8 @@
 import SignInPage from "@/components/templates/SignInPage";
+import { cookies } from "next/headers";
 
-function signIn() {
+async function signIn() {
+
   return <SignInPage />;
 }
 
