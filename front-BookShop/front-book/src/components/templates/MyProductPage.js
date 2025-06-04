@@ -31,9 +31,13 @@ function MyProductPage() {
     }
     getMyProducts();
   }, [myProduct]);
-  //   console.log(myProduct);
 
-  return <Item data={myProduct} />;
+
+  return (
+    <div className="w-[80%] flex justify-center md:justify-between flex-wrap md:gap-y-2">
+    <Item data={myProduct} />
+    </div>
+);
 }
 
 export default MyProductPage;

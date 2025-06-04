@@ -3,7 +3,7 @@ import React from 'react'
 
 function layoutProfile({children}) {
   return (
-    <ProfileSidebar>
+    <ProfileSidebar >
         {children}
     </ProfileSidebar>
   )

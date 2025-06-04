@@ -17,12 +17,12 @@ function ProfileSidebar({ children }) {
   const router = useRouter();
 
   return (
-    <div className="flex justify-between mt-[40px] w-[400px] mr-[50px] md:w-100">
-      <div className="flex items-center flex-col  justify-around h-64 rounded-[10px] sm:w-[350px] sm:h-80 sm:mr-[25%] w-[220px] shadow-2xl divide-solid divide-gray-400 ">
+    <div className="flex h-60 w-fit mt-[40px] mr-[155px]">
+      <div className="flex-shrink-0 w-[220px] sm:w-[300px] flex items-center flex-col justify-around h-64 rounded-[10px] shadow-2xl divide-solid divide-gray-400 ">
         <CgProfile className="text-4xl pt-2" />
         <p className="text-gray-500 mt-[5px] text-[1.1rem]">{username}</p>
         <span className="border-t border-gray-600"></span>
-        <div className="flex flex-row flex-wrap items-center justify-around mb-5 space-y-8">
+        <div className="flex flex-col gap-y-0.5 flex-wrap items-center justify-around mb-5 space-y-8">
           <Link href="/profile">حساب کاربری</Link>
           <Link href="/profile/my-product">آگهی های من</Link>
           <Link href="/profile/add-product">ثبت آگهی</Link>
@@ -36,7 +36,7 @@ function ProfileSidebar({ children }) {
           }}
         />
       </div>
-      <div className="w-[100%]">{children}</div>
+      <div className="flex-1 ml-4">{children}</div>
     </div>
   );
 }
