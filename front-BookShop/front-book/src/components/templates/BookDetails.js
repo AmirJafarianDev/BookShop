@@ -123,7 +123,7 @@ async function BookDetails({ id }) {
           <div className="space-y-5">
             <div className="flex items-center text-gray-700 text-lg">
               <UserCircleIcon className="h-6 w-6 ml-3 text-gray-500" />
-              <span className="font-medium">نویسنده:</span>
+              <span className="font-medium">فروشنده:</span>
               <span className="mr-2">{author}</span>
             </div>
 
